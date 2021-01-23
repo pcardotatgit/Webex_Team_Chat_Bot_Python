@@ -4,8 +4,10 @@ In this repo you will find instructions for :
 
 - Creating a Webex Team Bot 
 - Adding a Webhook to your Webex Team Bot.
-- Installing a Pedagogic Python Web logic for your bot. Which will help you understand step by step how everything works
-- Interact with your bot thru it's own Webex Team Room.
+- Installing a Pedagogic Python Web logic to your Webex bot. 
+- Interact with your bot through it's own Webex Team Room.
+
+The goal of this article is mainly help you to understand how it work and how to start quickly.
 
 # Create a Webex Team Bot
 
@@ -171,24 +173,32 @@ or
 	python -m venv venv 
 	venv\Scripts\activate
 
-### clone the relay module code
+### clone the bot logic code
 
 Then clone the code :
 
-    git clone 
+    git clone https://github.com/pcardotatgit/Webex_Team_Chat_Bot_Python.git
 
-Change directory to the Relay Module folder:
+Change directory to the bot logic folder:
 
-    cd tr-05-serverless-cybercrime-tracker
+    cd Webex_Team_Chat_Bot_Python
 
 ### Install Python Modules
 
     python -m pip install --upgrade pip
     pip install -r requirements.txt
 
-## Edit config.py
+## Edit the config.py initialization file
 
-**config.py** is an variable file that contains Your Webex Team Bot detail. Edit the file and assign the correct values to the listed variables
+**config.py** is an init file that contains Your Webex Team Bot details. 
+
+Edit this file and assign the correct values to the listed variables
+
+bot_email = "ex:my_python_bot@webex.bot"
+bot_name = "ex:my_python_bot"
+bearer = "THE_Webex_Bot_Bearer_token_here"
+webhook_url = 'targetUrl here ex:http://db19a7dc123.ngrok.io'
+webhook_name = 'ex:My_Web_Hook'
 
 ### Start your bot logic 
 
@@ -196,7 +206,12 @@ Change directory to the Relay Module folder:
 
 ![](img/webex_team_bot-17.png )
 
-As you can see, the application tells you that it is listening on port 5000.	
+As you can see, the application tells you that it is listening on port 3000.	
+You can change that in the python script ( Line 242 )
+
+	httpd = HTTPServer(('localhost', 3000), SimpleHTTPRequestHandler)
+	
+And don't forget to start NGROK on that port.
 
 **Let's test the bot !**
 
