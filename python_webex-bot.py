@@ -56,7 +56,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                 send_webex_post("https://webexapis.com/v1/messages",
                                 {"roomId": webhook['data']['roomId'], "markdown": msg})
             elif in_message.startswith('ping'):
-                print(yellow("let s reply to thind ping",bold=True))
+                print(yellow("let s reply PONG to this ping",bold=True))
                 send_webex_post("https://webexapis.com/v1/messages",
                                {"roomId": webhook['data']['roomId'], "markdown": "*PONG !*"}  ) 
             elif in_message.startswith(':command-1'):
