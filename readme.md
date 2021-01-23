@@ -194,11 +194,11 @@ Change directory to the bot logic folder:
 
 Edit this file and assign the correct values to the listed variables
 
-bot_email = "ex:my_python_bot@webex.bot"
-bot_name = "ex:my_python_bot"
-bearer = "THE_Webex_Bot_Bearer_token_here"
-webhook_url = 'targetUrl here ex:http://db19a7dc123.ngrok.io'
-webhook_name = 'ex:My_Web_Hook'
+- bot_email = "ex:my_python_bot@webex.bot"
+- bot_name = "ex:my_python_bot"
+- bearer = "THE_Webex_Bot_Bearer_token_here"
+- webhook_url = 'targetUrl here ex:http://db19a7dc123.ngrok.io'
+- webhook_name = 'ex:My_Web_Hook'
 
 ### Start your bot logic 
 
