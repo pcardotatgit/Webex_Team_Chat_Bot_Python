@@ -7,7 +7,7 @@ In this repo you will find instructions for :
 - Installing a Pedagogic Python Web logic to your Webex bot. 
 - Interact with your bot through it's own Webex Team Room.
 
-The goal of this article is mainly help you to understand how it work and how to start quickly.
+The goal of this article is mainly help you to understand how webex bot works and how to start one quickly.
 
 # Create a Webex Team Bot
 
@@ -39,21 +39,21 @@ Once created **COPY THE WEBEX BOT TOKEN !!**  and copy it's mail as well.
 
 One of magic of Webex Team bots is that you can interact directly with them.  You can send them messages and they will answer to you !.
 
-For doing this you need a Webhook.
+For doing this you need to attach a Webhook to the bot.
 
-The Webex Webhook will allow to any web server to receive all the messages which will be sent to the room.
+The Webex Webhook will allow to any web server to receive all the messages that will be sent to the bot room.
 
-These message will be copied when they will received in the Webex Team Room and sent to the Web server URL.
+These messages will be copied when they will be received into the Webex Bot Room and sent to the Web server URL.
 
-The Web Server is any web server and the logic inside which can process the sent data by the webhook.
+The Web Server can be any web server and the logic inside which can process the sent data by the webhook.
 
 Actually the message is sent thanks to a HTTP **POST** call which act exactly as the calls used to send a formular to a web server.
 
 ![](img/webex_team_bot-12.gif)
 
-That means that the web server will act exactly like any web server. It will read the variables sent thru this call and will process them.
+That means that the web server will act exactly like any web server. It will read the variables sent thru this POST call and will process them.
 
-The result of the data processing will be an HTTP result containing all the information to be sent as results.
+The result of the data processing will be an HTTP result containing all information computed by the web server.
 
 And these results will be sent to the webex team room thanks to Send Message API call to the room ID, with the Webex BOT BEARER TOKEN.
 
@@ -86,7 +86,7 @@ And use Your **Bot Webex BEARER TOKEN**
 
 ## The BOT Webex Room
 
-Starting from now, we are going to use the BOT Webex Room Id, in order to interact with it.
+Starting from now, we are going to use the BOT Webex Room, in order to interact with it.
 
 Go to your Webex Team and **contact** your bot thanks to it's mail.
 
@@ -95,23 +95,15 @@ Go to your Webex Team and **contact** your bot thanks to it's mail.
 And enter to the Bot's room. 
 As test, You can send some test messages into the room.  
 
-Nothing will happen until we add the bot logic.
+At this point Nothing special will happen except your message sent to the bot.
 
-Locate the BOT ROOM ID then. We will use it as the Destination ROOM ID in our logic scripts.
-
-You can use the **list_room.py** to help you to get this room id.
-
-Edit this file, assign to the **BOT_ACCESS_TOKEN** variable at the top of this file the value of the BOT Bearer Token and run the file.
-
-It will return you the Bot's room ID.
-
-Or go to the Webex Developer documentation, use the Webex BOT token to call the **/v1/rooms** api call to get this room id.
+For information we need the Bot Room ID in order to send to it messages from any script. This room id will be automatically discoverer by our script. You don't need to search for it.
 
 ## The Bot Logic
 
 The Webex Team Bot logic attached to the Webex Team Bot, is just a web server which listens to webhook calls. Everytime a message is send into the Bot's room, a webhook call is sent to a target URL that will be our Bot Logic Web Server.
 
-This Bot Logic Web Server is the **python_webex-bot.py** python file.
+This Bot Logic Web Server is actually the **webex-bot.py** python file. If you open it you will see that it is based on the simple HTTP.request module. 
 
 ## Make Your Bot Logic available on the INTERNET
 
@@ -202,12 +194,12 @@ Edit this file and assign the correct values to the listed variables
 
 ### Start your bot logic 
 
-    python python_webex-bot.py
+    python webex-bot.py
 
 ![](img/webex_team_bot-17.png )
 
 As you can see, the application tells you that it is listening on port 3000.	
-You can change that in the python script ( Line 242 )
+You can change that in the python script ( Line 222 )
 
 	httpd = HTTPServer(('localhost', 3000), SimpleHTTPRequestHandler)
 	
@@ -237,7 +229,7 @@ Now send **help** into the Bot's room and have a look to the result
 
 As your bot logic works, you can modify it's behavior.
 
-Edit the **python_webex-bot.py** file and go to the **def do_POST(self):** function.
+Edit the **webex-bot.py** file and go to the **def do_POST(self):** function. Modify the if statement with new keywords and actions to be executed in the conditionnal branch
 
 Ok it's up to YOU now !!
 

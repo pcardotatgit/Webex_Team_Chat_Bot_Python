@@ -1,14 +1,13 @@
 '''
-    List rooms of the Webex Team Bot
+    List rooms the Webex Team Bot belongs to
 '''
 import requests
 import json
 from crayons import green
-
-BOT_ACCESS_TOKEN = 'PUT HERE THE WEBEX TEAM BOT BEARER TOKEN'
+from config import *
 
 URL = f'https://webexapis.com/v1/rooms'
-headers = {'Authorization': 'Bearer ' + BOT_ACCESS_TOKEN,
+headers = {'Authorization': 'Bearer ' + bearer,
            'Content-type': 'application/json;charset=utf-8'}
 response = requests.get(URL, headers=headers)
 #print(type(response))
